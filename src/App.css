@@ -139,4 +139,9 @@ main {
   min-height: calc(100vh - 60px); /* Adjust based on header and footer height */
 }
 
+nav ul li a.active {
+  font-weight: bold;
+  color: blue; /* Highlight color */
+  border-bottom: 2px solid blue; /* Optional underline for emphasis */
+}
 

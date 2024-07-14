@@ -34,7 +34,7 @@ function Portfolio() {
               skills="Java, JSON/XML, Problem Solving"
               takeaway="Began learning how to interpret existing code and applied it to create features like a 'metal detector' and a 'digger' item, strengthened my understanding of Java and mod development."/>
         <Card name="Highliner AI" 
-              objective="Contributed to the development of mock-data generation and a simple email-request website for a startup."
+              objective="Contributed to the development of mock-data generation and a simple email-request website for an AI startup."
               skills="HTML, CSS, Node.js, Python, Artificial Intelligence"
               takeaway="My first corporate experience involved more research than coding, deepening my understanding of AI models and data quality, and emphasizing the importance of version control."/>
         </div>
