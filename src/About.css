@@ -1,0 +1,70 @@
+/* Use the theme's color palette and styling conventions */
+.about-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #20232a; /* Dark background for consistency */
+    color: white; /* Ensure text is readable against the dark background */
+    box-sizing: border-box;
+  }
+  
+  /* Styling for .about-text to integrate with the overall design */
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    padding: 2vw; /* Responsive padding */
+    background-color: #333; /* Slightly lighter shade for visual hierarchy */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Depth through shadow */
+    margin: 20px auto;
+  }
+  
+  /* Update picture styles to match the overall aesthetic */
+  .pictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .pictures img {
+    max-width: 50%; /* Maintain aspect ratio while filling space appropriately */
+    height: auto;
+    border-radius: 8px; /* Rounded corners for modern look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Update paragraph styles for consistency and readability */
+  .about-text p {
+    line-height: 1.6; /* Improving readability */
+    color: #E0E0E0; /* Slightly off-white for softer contrast */
+  }
+  
+  /* Styling specific class adjustments for .t1, .t2, .t3 */
+  .t1, .t2, .t3 {
+    border: 1px solid #61dafb; /* Use accent color for borders */
+    padding: 15px;
+    margin: 5px;
+    background-color: #242424; /* Keeping background consistent */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Subtle, thematic shadow */
+    color: #bababa; /* Light gray for text */
+    width: auto; /* Adjust width based on content */
+    text-align: left;
+    flex-grow: 1; /* Allow flexible growth */
+  }
+  
+  /* Ensuring headers are thematically styled */
+  .about-page h1 {
+    color: #ffd07d; /* Consistent with other headers */
+  }
+  

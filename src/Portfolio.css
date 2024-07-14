@@ -1,0 +1,65 @@
+.portfolio {
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    color: #E0E0E0; /* Light gray text */
+    background-color: #20232a; /* Dark background */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.portfolio h1 {
+    text-align: center;
+    color: #ffd07d; /* Bright yellow-orange for the main title */
+    font-size: 36px;
+    padding-bottom: 20px;
+}
+
+.academicList {
+    background-color: #333; /* Slightly lighter dark shade */
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.academicList:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.academicList h2, .academicList h3 {
+    color: #a4c2f4; /* Soft blue, different from label color for distinction */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.classList li {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.Cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;
+    margin: 10px;
+}

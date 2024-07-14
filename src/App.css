@@ -1,0 +1,142 @@
+/* General resets and box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Verdana', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+header, footer {
+  align-items: stretch;
+  width: 100%;
+  padding: 20px;
+  background-color: #242424;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+header h1 {
+  font-size: 2vw; /* Responsive font size */
+  line-height: 2.1;
+  color: #ffd07d;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 1vw 0;
+}
+
+nav ul li a {
+  color: #61dafb; /* Bright, engaging color */
+  text-decoration: none;
+  padding: 0.5vw 1vw; /* Responsive padding */
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #61dafb; /* Interactive hover effect */
+  color: #20232a;
+  transform: scale(1.1);
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #20232a;
+  color: white;
+  text-align: center;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 71vh;
+  justify-content: center;
+}
+
+.profile-picture img {
+  width: 30vw; /* Responsive width */
+  height: 30vw; /* Responsive height, maintains aspect ratio */
+  object-fit: cover;
+  border-radius: 10%;
+  margin-left: 5vw;
+}
+
+.TextBlock {
+  width: 60%; /* Adjust based on content and preference */
+  padding: 3vw; /* Responsive padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Aligns items to the start (left side) of the container */
+  text-align: left;
+  transform: translateY(5vh); /* Scales with viewport height */
+  margin-left: 8vw;
+}
+
+.TextBlock h1, h2, h5 {
+  margin: 1vw 0; /* Responsive vertical spacing */
+}
+
+.TextBlock h1 {
+  font-size: 2vw; /* Responsive font size */
+  opacity: 0.8; /* Slightly dim the 'Hi' to keep focus on the name */
+  color: #baf5ff;
+}
+
+.TextBlock h2 {
+  font-size: 6vw; /* Responsive font size */
+  color: #00D1FF; /* Bright and fun electric blue */
+}
+
+.TextBlock h5 {
+  font-size: 1.5vw; /* Responsive font size */
+  color: #baf5ff;
+}
+
+.social-images {
+  display: flex;
+  justify-content: flex-start; /* Aligns icons to the left */
+  width: 100%; /* Ensures the container spans the full width if needed */
+  margin-top: 6vw; /* Responsive spacing from the TextBlock */
+}
+
+.social-images img {
+  width: 5vw; /* Responsive icon width */
+  height: 2.5vw; /* Responsive icon height, maintains aspect ratio */
+  margin-right: 1vw; /* Responsive space between icons */
+  border-radius: 10%;
+}
+
+main {
+  padding-bottom: 60px; /* More than the height of the footer */
+  min-height: calc(100vh - 60px); /* Adjust based on header and footer height */
+}
+
+
