@@ -24,17 +24,15 @@ html, body {
 header, footer {
   align-items: stretch;
   width: 100%;
-  padding: 20px;
+  padding: 2vw; /* Adjust padding to be relative to the viewport width */
   background-color: #242424;
   color: white;
   text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
 }
 
-
-
 header h1 {
-  font-size: 2vw; /* Responsive font size */
+  font-size: 2vw;
   line-height: 2.1;
   color: #ffd07d;
 }
@@ -47,28 +45,26 @@ nav ul {
 }
 
 nav ul li a {
-  color: #61dafb; /* Bright, engaging color */
+  color: #61dafb;
   text-decoration: none;
-  padding: 0.5vw 1vw; /* Responsive padding */
-  border-radius: 5px;
+  padding: 0.5vw 1vw;
+  border-radius: 0.5vw;
   transition: all 0.3s ease;
 }
 
 nav ul li a:hover {
-  background-color: #61dafb; /* Interactive hover effect */
+  background-color: #61dafb;
   color: #20232a;
   transform: scale(1.1);
 }
 
 footer {
   margin-top: auto;
-  padding: 20px;
+  padding: 2vw; /* Responsive padding based on viewport width */
   background-color: #20232a;
   color: white;
   text-align: center;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  bottom: 0;
+  box-shadow: 0 -0.2vw 0.4vw rgba(0, 0, 0, 0.1);
 }
 
 .profile-container {
@@ -81,67 +77,66 @@ footer {
 }
 
 .profile-picture img {
-  width: 30vw; /* Responsive width */
-  height: 30vw; /* Responsive height, maintains aspect ratio */
+  width: 30vw; /* Scale width based on viewport width */
+  height: 30vw; /* Maintain aspect ratio */
   object-fit: cover;
   border-radius: 10%;
   margin-left: 5vw;
 }
 
 .TextBlock {
-  width: 60%; /* Adjust based on content and preference */
-  padding: 3vw; /* Responsive padding */
+  width: 60%;
+  padding: 3vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* Aligns items to the start (left side) of the container */
+  align-items: flex-start;
   text-align: left;
-  transform: translateY(5vh); /* Scales with viewport height */
+  transform: translateY(5vh);
   margin-left: 8vw;
 }
 
 .TextBlock h1, h2, h5 {
-  margin: 1vw 0; /* Responsive vertical spacing */
+  margin: 1vw 0;
 }
 
 .TextBlock h1 {
-  font-size: 2vw; /* Responsive font size */
-  opacity: 0.8; /* Slightly dim the 'Hi' to keep focus on the name */
+  font-size: 2vw;
+  opacity: 0.8;
   color: #baf5ff;
 }
 
 .TextBlock h2 {
-  font-size: 6vw; /* Responsive font size */
-  color: #00D1FF; /* Bright and fun electric blue */
+  font-size: 6vw;
+  color: #00D1FF;
 }
 
 .TextBlock h5 {
-  font-size: 1.5vw; /* Responsive font size */
+  font-size: 1.5vw;
   color: #baf5ff;
 }
 
 .social-images {
   display: flex;
-  justify-content: flex-start; /* Aligns icons to the left */
-  width: 100%; /* Ensures the container spans the full width if needed */
-  margin-top: 6vw; /* Responsive spacing from the TextBlock */
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 6vw;
 }
 
 .social-images img {
-  width: 5vw; /* Responsive icon width */
-  height: 2.5vw; /* Responsive icon height, maintains aspect ratio */
-  margin-right: 1vw; /* Responsive space between icons */
+  width: 5vw;
+  height: 2.5vw;
+  margin-right: 1vw;
   border-radius: 10%;
 }
 
 main {
-  padding-bottom: 60px; /* More than the height of the footer */
-  min-height: calc(100vh - 60px); /* Adjust based on header and footer height */
+  padding-bottom: 6vw; /* More than the height of the footer */
+  min-height: calc(100vh - 6vw); /* Adjust based on header and footer height */
 }
 
 nav ul li a.active {
   font-weight: bold;
-  color: blue; /* Highlight color */
-  border-bottom: 2px solid blue; /* Optional underline for emphasis */
+  color: blue;
+  border-bottom: 0.2vw solid blue; /* Underline thickness also scales */
 }
-

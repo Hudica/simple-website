@@ -41,13 +41,19 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --text-color: #213547;
+    --background-color: #ffffff;
+    --link-hover-color: #747bff;
+    --button-bg-color: #f9f9f9;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #cfd8dc;
+    --background-color: #263238;
+    --link-hover-color: #82b1ff;
+    --button-bg-color: #37474f;
   }
 }
