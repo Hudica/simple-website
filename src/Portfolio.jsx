@@ -21,6 +21,10 @@ function Portfolio() {
         </p>
       </div>
       <div class="Cards">
+      <Card name="BrightSide Newsletter"
+              objective="Developed an automated newsletter delivering the top four most positive, non-controversial news headlines to subscribers. Leveraged the Transformers Library to fine-tune a pre-trained model on hundreds of news headlines, combined with RSS feeds to scrape headlines from credible sources. Utilized Flask for backend operations, MongoDB for user database management, and Amazon SES for custom email distribution. (Jul 2024-Present)"
+              skills="Python, HTML, CSS, Flask, APIs, Python Libraries(numpy, pandas, transformers), MongoDB, RSS Feeds, Vercel"
+              takeaway="Made my first full stack project by myself, learned how to customly train AI models, create my own APIs, utilize libraries, and safely store user emails"/>
         <Card name="Pawpilot"
               objective="Enhance accessibility to computer science education for underprivileged students through an intuitive web platform integrated with AI. Our website breaks down assignments into manageable steps for beginners, fostering independent learning without directly providing solutions. (Mar 2024-Mar 2024)"
               skills="HTML, CSS, Node.js, API Integration, Resource Management"
