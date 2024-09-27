@@ -13,6 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --primary-color: #00bcd4; /* Teal */
+  --secondary-color: #006064; /* Dark Teal */
+  --background-color: #f0f4f8; /* Light Gray */
+  --text-color: #263238; /* Dark Gray */
+  --accent-color: #ffab00; /* Amber */
+}
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -29,6 +38,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
 
 
 button:hover {

@@ -116,6 +116,25 @@ footer {
   color: #baf5ff;
 }
 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.TextBlock h2 {
+  font-size: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #fff;
+  animation: typing 4 steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #fff; }
+}
+
+
 .social-images {
   display: flex;
   justify-content: flex-start;
@@ -140,3 +159,16 @@ nav ul li a.active {
   color: blue;
   border-bottom: 0.2vw solid blue; /* Underline thickness also scales */
 }
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
