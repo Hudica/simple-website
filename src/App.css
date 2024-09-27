@@ -8,8 +8,6 @@
 
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
 }
@@ -22,19 +20,12 @@ html, body {
 }
 
 header, footer {
-  align-items: stretch;
   width: 100%;
-  padding: 2vw; /* Adjust padding to be relative to the viewport width */
+  padding: 2vw;
   background-color: #242424;
   color: white;
   text-align: center;
   box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  font-size: 2vw;
-  line-height: 2.1;
-  color: #ffd07d;
 }
 
 nav ul {
@@ -60,7 +51,7 @@ nav ul li a:hover {
 
 footer {
   margin-top: auto;
-  padding: 2vw; /* Responsive padding based on viewport width */
+  padding: 2vw;
   background-color: #20232a;
   color: white;
   text-align: center;
@@ -73,12 +64,11 @@ footer {
   align-items: center;
   width: 90%;
   height: 71vh;
-  justify-content: center;
 }
 
 .profile-picture img {
-  width: 30vw; /* Scale width based on viewport width */
-  height: 30vw; /* Maintain aspect ratio */
+  width: 30vw;
+  height: 30vw;
   object-fit: cover;
   border-radius: 10%;
   margin-left: 5vw;
@@ -92,48 +82,57 @@ footer {
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  transform: translateY(5vh);
   margin-left: 8vw;
 }
 
-.TextBlock h1, h2, h5 {
-  margin: 1vw 0;
-}
-
-.TextBlock h1 {
-  font-size: 2vw;
-  opacity: 0.8;
-  color: #baf5ff;
-}
-
-.TextBlock h2 {
-  font-size: 6vw;
-  color: #00D1FF;
-}
-
-.TextBlock h5 {
-  font-size: 1.5vw;
-  color: #baf5ff;
-}
-
+/* Typing animation keyframes */
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.TextBlock h2 {
-  font-size: 3rem;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.15em solid #fff;
-  animation: typing 4 steps(40, end), blink-caret 0.75s step-end infinite;
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @keyframes blink-caret {
-  from, to { border-color: transparent; }
-  50% { border-color: #fff; }
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
 }
 
+/* Base styling for typing text */
+.typing-text {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #fff;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+/* First line: "Hello," */
+.typing-text:nth-child(1) {
+  font-size: 2vw;
+  color: #baf5ff;
+  animation-delay: 0s;
+}
+
+/* Second line: "I'm Hudson" */
+.typing-text:nth-child(2) {
+  font-size: 6vw;
+  color: #00D1FF;
+  animation-delay: 3.5s;
+}
+
+/* Third line: "Computer Science @ Northeastern" */
+.typing-text:nth-child(3) {
+  font-size: 1.5vw;
+  color: #baf5ff;
+  animation-delay: 7s;
+}
 
 .social-images {
   display: flex;
@@ -150,25 +149,12 @@ footer {
 }
 
 main {
-  padding-bottom: 6vw; /* More than the height of the footer */
-  min-height: calc(100vh - 6vw); /* Adjust based on header and footer height */
+  padding-bottom: 6vw;
+  min-height: calc(100vh - 6vw);
 }
 
 nav ul li a.active {
   font-weight: bold;
   color: blue;
-  border-bottom: 0.2vw solid blue; /* Underline thickness also scales */
+  border-bottom: 0.2vw solid blue;
 }
-nav ul li a {
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-}
-

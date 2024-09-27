@@ -7,10 +7,11 @@ function Home() {
     return (
         <div className="profile-page">
             <div className="profile-container">
-                <div className="TextBlock">
-                    <h1>Hello,</h1>
-                    <h2>I'm Hudson</h2>
-                    <h5>Computer Science @ Northeastern</h5>
+            <div className="TextBlock">
+                <h1 className="typing-text">Hello,</h1>
+                <h2 className="typing-text">I'm Hudson</h2>
+                <h5 className="typing-text">Computer Science @ Northeastern</h5>
+                <div className="social-images">
                         <div className="social-images">
                             <a href="https://github.com/Hudica" target="_blank" rel="noopener noreferrer">
                                 <img src={githubLogo} alt="GitHub logo" />
@@ -25,6 +26,7 @@ function Home() {
                 </div>
             </div>
         </div>
+    </div>
     );
 }
 
