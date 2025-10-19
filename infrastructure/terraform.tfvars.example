@@ -1,0 +1,24 @@
+# AWS Region
+aws_region = "us-east-1"
+
+# Project Name
+project_name = "my-app"
+
+# Environment
+environment = "dev"
+
+# VPC CIDR Block
+vpc_cidr_block = "10.0.0.0/16"
+
+# Frontend Configuration
+frontend_cpu = 256
+frontend_memory = 512
+frontend_desired_count = 2
+frontend_max_capacity = 4
+frontend_min_capacity = 2
+frontend_cpu_target_value = 50
+frontend_scale_in_cooldown = 300
+frontend_scale_out_cooldown = 300
+
+# Log Retention Days
+log_retention_days = 30
