@@ -1,0 +1,25 @@
+# AWS Region
+aws_region = "us-east-1"
+
+# Project Name
+project_name = "my-app"
+
+# Environment
+environment = "dev"
+
+# VPC CIDR Block
+vpc_cidr_block = "10.0.0.0/16"
+
+# Public Subnet CIDR Blocks
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+
+# Private Subnet CIDR Blocks
+private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
+
+# Frontend Task Configuration
+frontend_cpu = 256
+frontend_memory = 512
+frontend_desired_count = 2
+frontend_max_capacity = 4
+frontend_min_capacity = 2
+frontend_cpu_target_value = 50
