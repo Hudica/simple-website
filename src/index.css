@@ -1,24 +1,26 @@
-:root {
+ :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #20232a;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-:root {
+  /* Light mode defaults */
   --primary-color: #00bcd4; /* Teal */
   --secondary-color: #006064; /* Dark Teal */
-  --background-color: #f0f4f8; /* Light Gray */
-  --text-color: #263238; /* Dark Gray */
+  --background-color: #f4f7fb; /* Page background */
+  --surface-color: #ffffff; /* Card / panel background */
+  --surface-alt-color: #e3f2fd; /* Softer accent surface */
+  --text-color: #263238; /* Primary text */
+  --muted-text-color: #607d8b; /* Secondary text */
   --accent-color: #ffab00; /* Amber */
+  --border-subtle-color: rgba(38, 50, 56, 0.08);
+  --portfolio-background-color: #e8f2ff; /* Accent background for portfolio */
+  --header-background-color: #0b1120; /* Solid color banner */
 }
 
 
@@ -33,13 +35,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-body {
   font-family: 'Poppins', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -58,7 +55,10 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     --text-color: #213547;
-    --background-color: #ffffff;
+    --background-color: #f5f7fb;
+    --surface-color: #ffffff;
+    --surface-alt-color: #f1f5f9;
+    --portfolio-background-color: #e8f2ff;
     --link-hover-color: #747bff;
     --button-bg-color: #f9f9f9;
   }
@@ -68,7 +68,12 @@ button:focus-visible {
 @media (prefers-color-scheme: dark) {
   :root {
     --text-color: #cfd8dc;
-    --background-color: #263238;
+    --background-color: #020617;
+    --surface-color: #1f2933;
+    --surface-alt-color: #243447;
+    --border-subtle-color: rgba(148, 163, 184, 0.4);
+    --portfolio-background-color: #020617;
+    --header-background-color: #020617;
     --link-hover-color: #82b1ff;
     --button-bg-color: #37474f;
   }

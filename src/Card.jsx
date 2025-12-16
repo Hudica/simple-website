@@ -2,15 +2,18 @@
 import './Card.css';
 
 function Card(props) {
-    return (
-        <div className="card">
-            <h3><label>Project:</label> {props.name}</h3>
-            <p><b>Objective:</b> {props.objective}</p>
-            <p><b>Skills:</b> {props.skills}</p>
-            <p><b>Takeaway:</b> {props.takeaway}</p>
-        </div>
+    const { name, objective, skills, takeaway, type = 'project' } = props;
 
-    )
+    return (
+        <div className={`card card--${type}`}>
+            <h3>
+            {name}
+            </h3>
+            <p><b>Objective:</b> {objective}</p>
+            <p><b>Skills:</b> {skills}</p>
+            <p><b>Takeaway:</b> {takeaway}</p>
+        </div>
+    );
 }
 
 export default Card;

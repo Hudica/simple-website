@@ -1,65 +1,219 @@
 .portfolio {
-    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    color: #E0E0E0; /* Light gray text */
-    background-color: #20232a; /* Dark background */
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    color: var(--text-color);
+    background-color: var(--portfolio-background-color);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.portfolio h1 {
+.portfolio-header {
     text-align: center;
-    color: #ffd07d; /* Bright yellow-orange for the main title */
-    font-size: 36px;
-    padding-bottom: 20px;
+    margin-bottom: 2.5rem;
 }
+
+.portfolio-header h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-tagline {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: var(--muted-text-color);
+}
+
+.portfolio-section {
+    margin-bottom: 3rem;
+}
+
+.portfolio-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.section-intro {
+    font-size: 0.95rem;
+    color: var(--muted-text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Academics */
 
 .academicList {
-    background-color: #333; /* Slightly lighter dark shade */
-    color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
+    background-color: var(--surface-color);
+    border-radius: 1rem;
+    padding: 1.75rem 1.75rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid var(--border-subtle-color);
+}
+
+.academicList h2 {
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    margin-bottom: 1.75rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--primary-color);
+    display: block;
 }
 
-.academicList:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+/* Center the inner content so it never feels left-heavy */
+.academic-content {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
 }
 
-.academicList h2, .academicList h3 {
-    color: #a4c2f4; /* Soft blue, different from label color for distinction */
+/* 3 even summary tiles */
+.academic-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    justify-content: center;
+    align-items: stretch;
 }
 
-ul {
-    list-style-type: none;
+.academic-highlight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+
+    padding: 1rem 1rem;
+    border-radius: 0.9rem;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle-color);
+}
+
+.academic-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--primary-color);
+}
+
+.academic-value {
+    font-weight: 650;
+    font-size: 1.05rem;
+}
+
+/* Coursework block centered and symmetric */
+.academic-classes {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 1.1rem 1.1rem;
+
+    border-radius: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-subtle-color);
+}
+
+.academic-classes h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.85rem;
+    color: var(--muted-text-color);
+    text-align: center;
+}
+
+.classList {
+    list-style: none;
     padding: 0;
+    margin: 0;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem 1rem;
+
+    max-width: 820px;
+    margin: 0 auto;
 }
 
 .classList li {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.75rem;
+
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle-color);
 }
 
-li:last-child {
-    border-bottom: none;
+@media (max-width: 900px) {
+    .academic-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .classList {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+    }
+
+    .academic-content,
+    .academic-classes {
+        max-width: 680px;
+    }
 }
+
+/* Projects grid */
 
 .Cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
 }
 
-.card {
-    flex: 1 1 300px;
-    margin: 10px;
+/* Experience cards */
+
+.work-section {
+    margin-top: 1.5rem;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.experience-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-card h3 span {
+    font-weight: 500;
+}
+
+.experience-meta {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted-text-color);
+    margin-bottom: 0.9rem;
+}
+
+.experience-card ul {
+    list-style: disc;
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.experience-card li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.35rem;
+}
+
+.experience-card li:last-child {
+    margin-bottom: 0;
 }

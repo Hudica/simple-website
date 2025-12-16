@@ -25,7 +25,7 @@ header, footer {
   align-items: stretch;
   width: 100%;
   padding: 2vw; /* Adjust padding to be relative to the viewport width */
-  background-color: #242424;
+  background-color: var(--header-background-color);
   color: white;
   text-align: center;
   box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@ nav ul li a:hover {
 footer {
   margin-top: auto;
   padding: 2vw; /* Responsive padding based on viewport width */
-  background-color: #20232a;
+  background-color: var(--header-background-color);
   color: white;
   text-align: center;
   box-shadow: 0 -0.2vw 0.4vw rgba(0, 0, 0, 0.1);
