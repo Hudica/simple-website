@@ -1,0 +1,180 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  right: clamp(0.6rem, 1.6vw, 1.6rem);
+  translate: 0 -50%;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  --at: 0;
+}
+
+/* The live altitude sits above the profile rather than riding the marker, so it
+   never lands on top of a camp label. */
+.rail__readout {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.rail__track {
+  position: relative;
+  width: 2px;
+  height: clamp(190px, 38vh, 340px);
+  background: var(--line-strong);
+  border-radius: 2px;
+}
+
+/* Ground already covered, filling from the bottom up. */
+.rail__gained {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(var(--at) * 100%);
+  background: linear-gradient(to top, var(--moss), var(--lichen));
+  border-radius: 2px;
+}
+
+.rail__stop {
+  position: absolute;
+  right: -7px;
+  bottom: calc(var(--at-stop) * 100%);
+  translate: 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 6px 0 6px 10px;
+}
+
+.rail__notch {
+  width: 16px;
+  height: 2px;
+  background: var(--line-strong);
+  border-radius: 2px;
+  transition: background-color 0.3s var(--ease-soft), width 0.3s var(--ease);
+}
+
+.rail__stop:hover .rail__notch,
+.rail__stop[data-state='here'] .rail__notch {
+  width: 22px;
+  background: var(--moss);
+}
+
+.rail__label {
+  position: absolute;
+  right: calc(100% + 2px);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  translate: 6px 0;
+  transition: opacity 0.3s var(--ease-soft), translate 0.3s var(--ease), color 0.3s var(--ease-soft);
+  pointer-events: none;
+}
+
+.rail__stop:hover .rail__label,
+.rail__stop:focus-visible .rail__label,
+.rail__stop[data-state='here'] .rail__label {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.rail__stop[data-state='here'] .rail__label { color: var(--ink); }
+
+.rail__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Where you are, and how high. */
+.rail__you {
+  position: absolute;
+  left: 1px;
+  bottom: calc(var(--at) * 100%);
+  translate: -50% 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bg) 82%, transparent);
+}
+
+
+@media (max-width: 900px) {
+  .rail {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    translate: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+    padding: 0.5rem var(--gutter) calc(0.5rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+  }
+
+  .rail__readout {
+    order: 2;
+    margin-left: 0.9rem;
+    font-size: 0.68rem;
+  }
+
+  .rail__track {
+    width: 100%;
+    height: 2px;
+  }
+
+  .rail__gained {
+    width: calc(var(--at) * 100%);
+    height: 100%;
+    background: linear-gradient(to right, var(--moss), var(--lichen));
+  }
+
+  .rail__stop {
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    left: calc(var(--at-stop) * 100%);
+    translate: -50% -50%;
+    padding: 12px 8px;
+  }
+
+  .rail__notch {
+    width: 2px;
+    height: 14px;
+  }
+
+  .rail__stop:hover .rail__notch,
+  .rail__stop[data-state='here'] .rail__notch {
+    width: 2px;
+    height: 20px;
+  }
+
+  /* The bar spans the full width, so a centred label on the first or last stop
+     would run off the screen edge. The notches and the readout carry it. */
+  .rail__label { display: none; }
+
+  .rail__you {
+    left: calc(var(--at) * 100%);
+    bottom: auto;
+    top: 1px;
+    translate: -50% -50%;
+  }
+}

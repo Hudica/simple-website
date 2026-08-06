@@ -1,27 +1,34 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { startClimbEngine } from './climb.js';
+import Mountain from './Mountain.jsx';
+import Wildlife from './Wildlife.jsx';
+import RouteRail from './RouteRail.jsx';
+import Masthead from './Masthead.jsx';
+import Trailhead from './Trailhead.jsx';
+import BaseCamp from './BaseCamp.jsx';
+import Approach from './Approach.jsx';
+import Ridge from './Ridge.jsx';
+import Summit from './Summit.jsx';
 import './App.css';
-import Header from './Header.jsx';
-import Footer from './Footer.jsx';
-import Home from './Home.jsx';
-import About from './About.jsx';
-import Portfolio from './Portfolio.jsx';
 
 function App() {
+  useEffect(() => startClimbEngine(), []);
+
   return (
-    <Router>
-      <div>
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="app">
+      <Mountain />
+      <Wildlife />
+      <Masthead />
+      <RouteRail />
+
+      <main className="route">
+        <Trailhead />
+        <BaseCamp />
+        <Approach />
+        <Ridge />
+        <Summit />
+      </main>
+    </div>
   );
 }
 

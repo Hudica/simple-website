@@ -1,13 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
-    <!-- Include in your index.html head section -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hudson's Portfolio</title>
+    <meta name="description" content="Hudson Kass: computer science and AI at Northeastern. Software engineering co-ops, hackathon projects, and a portfolio laid out like a topo map." />
+    <meta name="theme-color" content="#EDF1E8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#080D0A" media="(prefers-color-scheme: dark)" />
+    <title>Hudson Kass · Software Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Young+Serif&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Resolve the theme before first paint so the wrong palette never flashes.
+      (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('theme'); } catch (e) {}
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

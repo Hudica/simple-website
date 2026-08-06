@@ -1,0 +1,166 @@
+/* End of the trail: a small fire in the footer. Four flame layers on
+   mismatched durations so the flicker never settles into a loop. */
+
+.campfire {
+  display: inline-block;
+  flex: none;
+  width: auto;
+  height: 48px;
+  vertical-align: middle;
+
+  --flame-deep: color-mix(in srgb, var(--ember) 74%, var(--ink));
+  --flame-warm: var(--ember);
+  --flame-amber: color-mix(in srgb, var(--ember) 74%, var(--lichen));
+  /* Light mode has no bright token: lifting the core toward --surface keeps it
+     reading as the hottest part instead of going olive. */
+  --flame-hot: color-mix(in srgb, color-mix(in srgb, var(--ember) 68%, var(--lichen)) 66%, var(--surface));
+  --glow-strength: 0.26;
+}
+
+[data-theme='dark'] .campfire {
+  --flame-deep: color-mix(in srgb, var(--ember) 66%, var(--bg-sunk));
+  --flame-hot: color-mix(in srgb, var(--lichen) 58%, var(--ember));
+  --glow-strength: 0.42;
+}
+
+/* Glow --------------------------------------------------------------------- */
+
+.campfire__glow-hot {
+  stop-color: var(--ember);
+  stop-opacity: var(--glow-strength);
+}
+
+.campfire__glow-warm {
+  stop-color: var(--ember);
+  stop-opacity: calc(var(--glow-strength) * 0.42);
+}
+
+.campfire__glow-edge {
+  stop-color: var(--ember);
+  stop-opacity: 0;
+}
+
+.campfire__glow {
+  transform-box: fill-box;
+  transform-origin: 50% 78%;
+  animation: campfire-breathe 3.1s var(--ease-soft) infinite;
+}
+
+@keyframes campfire-breathe {
+  0%,
+  100% { transform: scale(1); opacity: 0.86; }
+  37% { transform: scale(1.07); opacity: 1; }
+  68% { transform: scale(0.97); opacity: 0.8; }
+}
+
+/* Hearth ------------------------------------------------------------------- */
+
+.campfire__log {
+  fill: var(--muted);
+}
+
+.campfire__log--back {
+  fill: color-mix(in srgb, var(--muted) 62%, transparent);
+}
+
+.campfire__stones ellipse {
+  fill: var(--line-strong);
+}
+
+.campfire__stones--back ellipse {
+  fill: color-mix(in srgb, var(--line-strong) 55%, transparent);
+}
+
+/* Flames ------------------------------------------------------------------- */
+
+.campfire__flame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.campfire__flame--deep {
+  fill: var(--flame-deep);
+  animation: campfire-lick-a 2.3s var(--ease-soft) infinite;
+}
+
+.campfire__flame--warm {
+  fill: var(--flame-warm);
+  animation: campfire-lick-b 1.7s var(--ease-soft) infinite;
+}
+
+.campfire__flame--amber {
+  fill: var(--flame-amber);
+  animation: campfire-lick-c 1.3s var(--ease-soft) infinite;
+}
+
+.campfire__flame--hot {
+  fill: var(--flame-hot);
+  animation: campfire-lick-d 0.9s var(--ease-soft) infinite;
+}
+
+@keyframes campfire-lick-a {
+  0%,
+  100% { transform: translateY(0) scale(1, 1) skewX(0deg); opacity: 0.82; }
+  27% { transform: translateY(-0.7px) scale(0.95, 1.08) skewX(-2deg); opacity: 0.92; }
+  53% { transform: translateY(0.3px) scale(1.05, 0.94) skewX(1.5deg); opacity: 0.74; }
+  78% { transform: translateY(-0.3px) scale(0.98, 1.03) skewX(-0.7deg); opacity: 0.86; }
+}
+
+@keyframes campfire-lick-b {
+  0%,
+  100% { transform: translateY(0) scale(1, 1) skewX(0deg); opacity: 0.94; }
+  19% { transform: translateY(0.4px) scale(1.06, 0.92) skewX(2.4deg); opacity: 0.84; }
+  46% { transform: translateY(-0.9px) scale(0.93, 1.11) skewX(-1.6deg); opacity: 1; }
+  74% { transform: translateY(-0.2px) scale(1.02, 0.98) skewX(1deg); opacity: 0.9; }
+}
+
+@keyframes campfire-lick-c {
+  0%,
+  100% { transform: translateY(0) scale(1, 1) skewX(0deg); opacity: 0.9; }
+  23% { transform: translateY(-1px) scale(0.9, 1.14) skewX(3deg); opacity: 1; }
+  58% { transform: translateY(0.5px) scale(1.08, 0.88) skewX(-2.2deg); opacity: 0.78; }
+  81% { transform: translateY(-0.4px) scale(0.97, 1.05) skewX(1.2deg); opacity: 0.93; }
+}
+
+@keyframes campfire-lick-d {
+  0%,
+  100% { transform: translateY(0) scale(1, 1) skewX(0deg); opacity: 0.88; }
+  31% { transform: translateY(-1.2px) scale(0.86, 1.2) skewX(-3.4deg); opacity: 1; }
+  62% { transform: translateY(0.6px) scale(1.12, 0.84) skewX(2.6deg); opacity: 0.7; }
+}
+
+/* Embers ------------------------------------------------------------------- */
+
+.campfire__embers circle {
+  fill: var(--flame-amber);
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  animation: campfire-spark var(--spark-dur) linear var(--spark-delay) infinite;
+}
+
+.campfire__embers circle:nth-child(1) { --drift: -5px; --spark-dur: 2.9s; --spark-delay: 0s; }
+.campfire__embers circle:nth-child(2) { --drift: 4.5px; --spark-dur: 3.7s; --spark-delay: 0.8s; }
+.campfire__embers circle:nth-child(3) { --drift: 1.8px; --spark-dur: 2.3s; --spark-delay: 1.6s; }
+.campfire__embers circle:nth-child(4) { --drift: 6px; --spark-dur: 4.1s; --spark-delay: 0.35s; }
+.campfire__embers circle:nth-child(5) { --drift: -3.5px; --spark-dur: 3.1s; --spark-delay: 2.2s; }
+
+@keyframes campfire-spark {
+  0% { transform: translate(0, 0) scale(0.5); opacity: 0; }
+  12% { opacity: 0.9; }
+  55% { transform: translate(calc(var(--drift) * 0.5), -15px) scale(1); opacity: 0.62; }
+  100% { transform: translate(var(--drift), -30px) scale(0.3); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campfire__glow,
+  .campfire__flame {
+    animation: none;
+    opacity: 1;
+  }
+
+  .campfire__flame--deep { opacity: 0.85; }
+
+  .campfire__embers { display: none; }
+}

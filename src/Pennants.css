@@ -1,0 +1,65 @@
+/* A short string of bunting, the kind strung over a basecamp table.
+   Seahawks colors folded in among the field-guide palette. */
+
+.pennants {
+  width: 100%;
+  height: 68px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pennants__line {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pennants__cord {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.pennants__flag {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: pennant-sway 4.6s var(--ease-soft) infinite;
+}
+
+.pennants__flag--navy path { fill: #002244; }
+.pennants__flag--green path { fill: #69BE28; }
+.pennants__flag--grey path { fill: #A5ACAF; }
+.pennants__flag--moss path { fill: var(--moss); }
+.pennants__flag--ember path { fill: var(--ember); }
+.pennants__flag--lichen path { fill: var(--lichen); }
+
+/* College navy all but vanishes against the night palette — outline it. */
+[data-theme='dark'] .pennants__flag--navy path {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.pennants__twelve {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  fill: #69BE28;
+}
+
+@keyframes pennant-sway {
+  0%,
+  100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+@media (max-width: 640px) {
+  .pennants { height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pennants__flag {
+    animation: none;
+    transform: none;
+  }
+}

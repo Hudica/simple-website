@@ -1,0 +1,151 @@
+/* Every offset and opacity below is a function of --climb. The scene only
+   moves while the visitor is scrolling, which is why it never nags at you. */
+
+.mtn {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Sky ---------------------------------------------------------------------- */
+
+.mtn__sky {
+  position: absolute;
+  inset: 0;
+  transition: background 0.5s var(--ease-soft);
+}
+
+.mtn__sky--valley {
+  background: linear-gradient(to bottom, var(--sky-forest) 0%, var(--sky-valley) 62%, var(--bg) 100%);
+}
+
+.mtn__sky--forest {
+  background: linear-gradient(to bottom, var(--sky-alpine) 0%, var(--sky-forest) 58%, var(--bg) 100%);
+  opacity: clamp(0, calc((var(--climb) - 0.12) / 0.22), 1);
+}
+
+.mtn__sky--alpine {
+  background: linear-gradient(to bottom, var(--sky-thin) 0%, var(--sky-alpine) 55%, var(--sky-forest) 100%);
+  opacity: clamp(0, calc((var(--climb) - 0.38) / 0.24), 1);
+}
+
+.mtn__sky--thin {
+  background: linear-gradient(to bottom, var(--sky-summit) 0%, var(--sky-thin) 60%, var(--sky-alpine) 100%);
+  opacity: clamp(0, calc((var(--climb) - 0.66) / 0.26), 1);
+}
+
+.mtn__stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 74%;
+  fill: var(--star);
+  opacity: clamp(0, calc((var(--climb) - 0.5) / 0.3), 1);
+}
+
+/* Ridgelines --------------------------------------------------------------- */
+
+.mtn__ridge {
+  position: absolute;
+  left: -2%;
+  width: 104%;
+  bottom: 0;
+  height: clamp(210px, 42vh, 460px);
+  will-change: transform;
+}
+
+/* Distant peaks barely shift. The ones at your feet drop away fast. */
+.mtn__far {
+  transform: translate3d(0, calc(var(--climb) * 26vh), 0);
+  height: clamp(180px, 34vh, 380px);
+}
+
+.mtn__mid {
+  transform: translate3d(0, calc(var(--climb) * 58vh), 0);
+}
+
+.mtn__near {
+  transform: translate3d(0, calc(var(--climb) * 108vh), 0);
+  height: clamp(150px, 26vh, 300px);
+}
+
+.mtn__far path { fill: color-mix(in srgb, var(--rock) 34%, transparent); }
+.mtn__mid path { fill: color-mix(in srgb, var(--rock-dark) 52%, transparent); }
+.mtn__near path { fill: color-mix(in srgb, var(--rock-dark) 82%, transparent); }
+
+/* Snow catches the far peaks once you are high enough to look across at them. */
+.mtn__far path {
+  fill: color-mix(
+    in srgb,
+    var(--snow) calc(var(--climb) * 42%),
+    color-mix(in srgb, var(--rock) 34%, transparent)
+  );
+}
+
+/* Treeline ----------------------------------------------------------------- */
+
+.mtn__trees {
+  position: absolute;
+  left: -2%;
+  bottom: 0;
+  width: 104%;
+  height: clamp(170px, 30vh, 330px);
+  /* Slower than the ridge behind them, so the tops stay silhouetted against
+     sky rather than sinking into the rock. Gone by the treeline. */
+  transform: translate3d(0, calc(var(--climb) * 40vh), 0);
+  opacity: clamp(0, calc(1 - (var(--climb) - 0.36) / 0.22), 1);
+  will-change: transform;
+}
+
+.mtn__trees path {
+  fill: #040805;
+}
+
+[data-theme='light'] .mtn__trees path {
+  fill: color-mix(in srgb, #24402c 74%, transparent);
+}
+
+/* Cloud deck --------------------------------------------------------------- */
+
+.mtn__clouds {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  top: 46%;
+  height: 30vh;
+  transform: translate3d(0, calc(var(--climb) * 46vh), 0);
+  opacity: clamp(0, calc((var(--climb) - 0.22) / 0.3), 1);
+  will-change: transform;
+}
+
+.mtn__clouds span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    60% 100% at 50% 50%,
+    color-mix(in srgb, var(--snow) 62%, transparent) 0%,
+    transparent 72%
+  );
+  filter: blur(6px);
+}
+
+.mtn__clouds span:nth-child(1) { top: 0; height: 16vh; }
+.mtn__clouds span:nth-child(2) { top: 8vh; height: 13vh; left: -14%; width: 90%; opacity: 0.8; }
+.mtn__clouds span:nth-child(3) { top: 14vh; height: 15vh; left: 22%; width: 96%; opacity: 0.7; }
+
+[data-theme='dark'] .mtn__clouds span {
+  background: radial-gradient(
+    60% 100% at 50% 50%,
+    color-mix(in srgb, var(--sky-alpine) 92%, var(--snow)) 0%,
+    transparent 74%
+  );
+}
+
+@media (max-width: 640px) {
+  .mtn__ridge { height: clamp(150px, 30vh, 300px); }
+  .mtn__trees { height: clamp(90px, 16vh, 170px); }
+}

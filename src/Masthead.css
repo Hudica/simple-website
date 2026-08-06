@@ -1,0 +1,79 @@
+.masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.7rem, 1.8vw, 1.15rem) var(--gutter);
+  /* Fades out once you are underway, so the climb has the screen to itself. */
+  opacity: clamp(0.24, calc(1 - var(--climb) * 6), 1);
+  transition: opacity 0.4s var(--ease-soft);
+}
+
+.masthead:hover,
+.masthead:focus-within { opacity: 1; }
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  translate: -50% -300%;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  transition: translate 0.3s var(--ease);
+  z-index: 50;
+}
+
+.skip-link:focus-visible { translate: -50% 0; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+}
+
+.brand__mark {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  overflow: visible;
+}
+
+.brand__ridge {
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: stroke 0.3s var(--ease-soft);
+}
+
+.brand__inner {
+  fill: none;
+  stroke: var(--lichen);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.brand:hover .brand__ridge { stroke: var(--lichen); }
+
+.brand__text {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .brand__text { display: none; }
+}

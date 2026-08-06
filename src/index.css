@@ -1,80 +1,292 @@
- :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* ==========================================================================
+   Tokens — "Field Guide": a topographic palette that survives both schemes.
+   Light  = a day climb, valley haze up to thin alpine air.
+   Dark   = a night climb, dusk at the trailhead up to stars on the summit.
+   ========================================================================== */
 
-  color-scheme: light dark;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  color-scheme: light;
 
-  /* Light mode defaults */
-  --primary-color: #00bcd4; /* Teal */
-  --secondary-color: #006064; /* Dark Teal */
-  --background-color: #f4f7fb; /* Page background */
-  --surface-color: #ffffff; /* Card / panel background */
-  --surface-alt-color: #e3f2fd; /* Softer accent surface */
-  --text-color: #263238; /* Primary text */
-  --muted-text-color: #607d8b; /* Secondary text */
-  --accent-color: #ffab00; /* Amber */
-  --border-subtle-color: rgba(38, 50, 56, 0.08);
-  --portfolio-background-color: #e8f2ff; /* Accent background for portfolio */
-  --header-background-color: #0b1120; /* Solid color banner */
+  /* Surfaces */
+  --bg: #edf1e8;
+  --bg-sunk: #e2e8dc;
+  --surface: #fafbf7;
+  --surface-2: #f1f4ec;
+  --surface-raised: #ffffff;
+
+  /* Ink */
+  --ink: #17211b;
+  --ink-soft: #37473c;
+  --muted: #5f7265;
+
+  /* Rules */
+  --line: rgba(23, 33, 27, 0.1);
+  --line-strong: rgba(23, 33, 27, 0.22);
+
+  /* Signal */
+  --moss: #35663a;
+  --moss-soft: #4e8450;
+  --lichen: #6f8a17;
+  --ember: #b0561f;
+
+  /* Terrain */
+  --contour: rgba(53, 102, 58, 0.15);
+  --contour-index: rgba(53, 102, 58, 0.28);
+  --lamp: rgba(111, 138, 23, 0.55);
+
+  /* Sky, low to high */
+  --sky-valley: #dfe9dc;
+  --sky-forest: #cfe0dd;
+  --sky-alpine: #b9d2e2;
+  --sky-thin: #93b6d8;
+  --sky-summit: #6f9bcb;
+  --star: transparent;
+
+  /* Rock and snow, revealed above the treeline */
+  --rock: #8d9186;
+  --rock-dark: #6d7268;
+  --snow: #f6f8f4;
+
+  --shadow-1: 0 1px 2px rgba(23, 33, 27, 0.05), 0 6px 18px -8px rgba(23, 33, 27, 0.18);
+  --shadow-2: 0 2px 4px rgba(23, 33, 27, 0.06), 0 24px 48px -22px rgba(23, 33, 27, 0.32);
+
+  /* Type */
+  --display: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --step--1: clamp(0.78rem, 0.75rem + 0.15vw, 0.86rem);
+  --step-0: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.14rem, 1.06rem + 0.4vw, 1.35rem);
+  --step-2: clamp(1.42rem, 1.26rem + 0.8vw, 1.95rem);
+  --step-3: clamp(1.85rem, 1.5rem + 1.7vw, 3rem);
+  --step-4: clamp(2.9rem, 1.9rem + 4.6vw, 6.6rem);
+
+  /* Rhythm */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --measure: 66ch;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --rail: clamp(3.25rem, 7vw, 6rem);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --climb: 0;
 }
 
+[data-theme='dark'] {
+  color-scheme: dark;
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  --bg: #080d0a;
+  --bg-sunk: #050807;
+  --surface: #101812;
+  --surface-2: #16211a;
+  --surface-raised: #1a251d;
+
+  --ink: #e6efe6;
+  --ink-soft: #c3d2c5;
+  --muted: #8aa08f;
+
+  --line: rgba(210, 232, 214, 0.11);
+  --line-strong: rgba(210, 232, 214, 0.24);
+
+  --moss: #7fc46b;
+  --moss-soft: #9ad489;
+  --lichen: #c6dc5f;
+  --ember: #e5904f;
+
+  --contour: rgba(127, 196, 107, 0.12);
+  --contour-index: rgba(127, 196, 107, 0.24);
+  --lamp: rgba(198, 220, 95, 0.5);
+
+  --sky-valley: #101a14;
+  --sky-forest: #0c1622;
+  --sky-alpine: #0a1220;
+  --sky-thin: #070d18;
+  --sky-summit: #04060e;
+  --star: rgba(236, 245, 255, 0.9);
+
+  --rock: #2a2f2c;
+  --rock-dark: #171b19;
+  --snow: #c9d6cd;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -10px rgba(0, 0, 0, 0.7);
+  --shadow-2: 0 2px 6px rgba(0, 0, 0, 0.5), 0 28px 60px -24px rgba(0, 0, 0, 0.9);
 }
-a:hover {
-  color: #535bf2;
+
+/* ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-color);
-  background-color: var(--background-color);
+  min-width: 320px;
+  font-family: var(--body);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.5s var(--ease-soft), color 0.5s var(--ease-soft);
+  /* `clip`, not `hidden`: hidden would make body a scroll container and every
+     sticky camp stage on the page would quietly stop sticking. */
+  overflow-x: clip;
 }
 
-
-
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --text-color: #213547;
-    --background-color: #f5f7fb;
-    --surface-color: #ffffff;
-    --surface-alt-color: #f1f5f9;
-    --portfolio-background-color: #e8f2ff;
-    --link-hover-color: #747bff;
-    --button-bg-color: #f9f9f9;
-  }
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
 
-/* Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #cfd8dc;
-    --background-color: #020617;
-    --surface-color: #1f2933;
-    --surface-alt-color: #243447;
-    --border-subtle-color: rgba(148, 163, 184, 0.4);
-    --portfolio-background-color: #020617;
-    --header-background-color: #020617;
-    --link-hover-color: #82b1ff;
-    --button-bg-color: #37474f;
-  }
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); line-height: 1.25; letter-spacing: -0.005em; }
+
+p { color: var(--ink-soft); }
+
+a {
+  color: var(--moss);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol { list-style: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--lichen);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lichen);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- The climb ------------------------------------------------------------ */
+
+/* A camp is a tall scroll region. Its stage pins to the viewport while you
+   scroll through it, so the scene plays out under your thumb. */
+.camp {
+  position: relative;
+  --p: 0;
+}
+
+.camp__stage {
+  position: sticky;
+  top: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shell {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Leave room for the route rail on the right. */
+.shell--railed {
+  padding-right: calc(var(--gutter) + var(--rail));
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.6em;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.eyebrow--plain::before { display: none; }
+
+/* A marker post: the altitude and name of wherever you have arrived. */
+.camp-sign {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(0.6rem, 1.6vw, 1.1rem);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.camp-sign__feet {
+  color: var(--ember);
+  font-weight: 500;
+}
+
+.camp-sign__rule {
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(to right, var(--line-strong), transparent);
+}
+
+/* Reveal driven by scroll position rather than a timer, so it also works for
+   anyone who has asked the system to reduce motion. */
+.rise {
+  opacity: var(--v, 1);
+  transform: translateY(calc((1 - var(--v, 1)) * 26px));
+}
+
+@media (max-width: 900px) {
+  .shell--railed { padding-right: var(--gutter); }
+}
+
+/* Only idle, self-running motion is suppressed. Anything the visitor drives by
+   scrolling stays, because they are the ones moving it. */
+@media (prefers-reduced-motion: reduce) {
+  [data-idle-motion] { animation: none !important; }
 }
