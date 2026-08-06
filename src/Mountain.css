@@ -17,32 +17,104 @@
   transition: background 0.5s var(--ease-soft);
 }
 
-.mtn__sky--valley {
-  background: linear-gradient(to bottom, var(--sky-forest) 0%, var(--sky-valley) 62%, var(--bg) 100%);
+/* Five stages of the same sky, cross-faded by altitude. */
+.mtn__sky--1 { background: var(--sky-1); }
+
+.mtn__sky--2 {
+  background: var(--sky-2);
+  opacity: clamp(0, calc((var(--climb) - 0.12) / 0.2), 1);
 }
 
-.mtn__sky--forest {
-  background: linear-gradient(to bottom, var(--sky-alpine) 0%, var(--sky-forest) 58%, var(--bg) 100%);
-  opacity: clamp(0, calc((var(--climb) - 0.12) / 0.22), 1);
+.mtn__sky--3 {
+  background: var(--sky-3);
+  opacity: clamp(0, calc((var(--climb) - 0.34) / 0.22), 1);
 }
 
-.mtn__sky--alpine {
-  background: linear-gradient(to bottom, var(--sky-thin) 0%, var(--sky-alpine) 55%, var(--sky-forest) 100%);
-  opacity: clamp(0, calc((var(--climb) - 0.38) / 0.24), 1);
+.mtn__sky--4 {
+  background: var(--sky-4);
+  opacity: clamp(0, calc((var(--climb) - 0.58) / 0.22), 1);
 }
 
-.mtn__sky--thin {
-  background: linear-gradient(to bottom, var(--sky-summit) 0%, var(--sky-thin) 60%, var(--sky-alpine) 100%);
-  opacity: clamp(0, calc((var(--climb) - 0.66) / 0.26), 1);
+.mtn__sky--5 {
+  background: var(--sky-5);
+  opacity: clamp(0, calc((var(--climb) - 0.8) / 0.2), 1);
 }
 
+/* Light mode never shows stars. Dark mode sets off under them and loses them
+   to the dawn on the last pitch. */
 .mtn__stars {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 74%;
   fill: var(--star);
-  opacity: clamp(0, calc((var(--climb) - 0.5) / 0.3), 1);
+  opacity: 0;
+}
+
+[data-theme='dark'] .mtn__stars {
+  opacity: clamp(0, calc(1 - (var(--climb) - 0.7) / 0.24), 1);
+}
+
+/* Sun and moon ------------------------------------------------------------- */
+
+.mtn__sun,
+.mtn__moon {
+  position: absolute;
+  width: clamp(44px, 6.5vw, 88px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+/* Light: the sun tracks down toward the ridgeline all the way up. */
+.mtn__sun {
+  left: 71%;
+  top: calc(11% + var(--climb) * 45%);
+  background: radial-gradient(
+    circle,
+    var(--sun-core) 40%,
+    color-mix(in srgb, var(--sun-core) 45%, transparent) 62%,
+    transparent 74%
+  );
+}
+
+/* The disc reddens as it drops. */
+.mtn__sun::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--sun-late) 42%,
+    color-mix(in srgb, var(--sun-late) 40%, transparent) 64%,
+    transparent 76%
+  );
+  opacity: clamp(0, calc((var(--climb) - 0.45) / 0.4), 1);
+}
+
+/* Dark: no sun until it breaks the horizon at the top. */
+[data-theme='dark'] .mtn__sun {
+  left: 66%;
+  top: calc(97% - clamp(0, calc((var(--climb) - 0.78) / 0.22), 1) * 31%);
+  opacity: clamp(0, calc((var(--climb) - 0.76) / 0.14), 1);
+}
+
+.mtn__moon { opacity: 0; }
+
+[data-theme='dark'] .mtn__moon {
+  left: 46%;
+  top: calc(7% + var(--climb) * 30%);
+  opacity: clamp(0, calc(1 - (var(--climb) - 0.3) / 0.26), 1);
+  background: radial-gradient(circle at 38% 36%, #eaf2ff 46%, #b9c8dd 62%, transparent 70%);
+}
+
+/* The band of colour sitting on the horizon at either end of the day. */
+.mtn__dawn {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 52%;
+  background: linear-gradient(to top, var(--dawn) 0%, transparent 100%);
+  opacity: clamp(0, calc((var(--climb) - 0.62) / 0.3), 1);
 }
 
 /* Ridgelines --------------------------------------------------------------- */
@@ -56,14 +128,15 @@
   will-change: transform;
 }
 
-/* Distant peaks barely shift. The ones at your feet drop away fast. */
+/* The ones at your feet drop away fast. The far range stays in frame the whole
+   way, so at the top you are looking across at peaks instead of at nothing. */
 .mtn__far {
-  transform: translate3d(0, calc(var(--climb) * 26vh), 0);
-  height: clamp(180px, 34vh, 380px);
+  transform: translate3d(0, calc(var(--climb) * 9vh), 0);
+  height: clamp(200px, 38vh, 420px);
 }
 
 .mtn__mid {
-  transform: translate3d(0, calc(var(--climb) * 58vh), 0);
+  transform: translate3d(0, calc(var(--climb) * 44vh), 0);
 }
 
 .mtn__near {
@@ -71,15 +144,25 @@
   height: clamp(150px, 26vh, 300px);
 }
 
-.mtn__far path { fill: color-mix(in srgb, var(--rock) 34%, transparent); }
-.mtn__mid path { fill: color-mix(in srgb, var(--rock-dark) 52%, transparent); }
-.mtn__near path { fill: color-mix(in srgb, var(--rock-dark) 82%, transparent); }
+/* With the sun low, the ranges read as silhouettes: the nearer the darker. */
+.mtn__far path {
+  fill: color-mix(in srgb, var(--rock) 34%, transparent);
+}
 
-/* Snow catches the far peaks once you are high enough to look across at them. */
+.mtn__mid path {
+  fill: color-mix(in srgb, var(--rock-dark) calc(52% + var(--climb) * 26%), transparent);
+}
+
+.mtn__near path {
+  fill: color-mix(in srgb, var(--rock-dark) calc(82% + var(--climb) * 18%), transparent);
+}
+
+/* Hazy and distant at the bottom, a hard silhouette once the sun is behind
+   them. Without this they wash out completely against the sunset. */
 .mtn__far path {
   fill: color-mix(
     in srgb,
-    var(--snow) calc(var(--climb) * 42%),
+    #3a3358 calc(var(--climb) * 70%),
     color-mix(in srgb, var(--rock) 34%, transparent)
   );
 }
@@ -115,7 +198,8 @@
   width: 120%;
   top: 46%;
   height: 30vh;
-  transform: translate3d(0, calc(var(--climb) * 46vh), 0);
+  /* Settles below you rather than sliding off, so the summit has a cloud sea. */
+  transform: translate3d(0, calc(var(--climb) * 20vh), 0);
   opacity: clamp(0, calc((var(--climb) - 0.22) / 0.3), 1);
   will-change: transform;
 }
@@ -140,9 +224,22 @@
 [data-theme='dark'] .mtn__clouds span {
   background: radial-gradient(
     60% 100% at 50% 50%,
-    color-mix(in srgb, var(--sky-alpine) 92%, var(--snow)) 0%,
+    color-mix(in srgb, #1b2740 88%, var(--snow)) 0%,
     transparent 74%
   );
+}
+
+/* The deck below you picks up the low sun at either end of the climb. */
+.mtn__clouds::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    58% 90% at 50% 62%,
+    color-mix(in srgb, var(--sun-late) 46%, transparent) 0%,
+    transparent 72%
+  );
+  opacity: clamp(0, calc((var(--climb) - 0.68) / 0.28), 1);
 }
 
 @media (max-width: 640px) {

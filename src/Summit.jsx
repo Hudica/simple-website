@@ -7,47 +7,47 @@ const PROJECTS = [
     name: 'BrightSide Newsletter',
     year: '2024 to now',
     summary:
-      'An automated newsletter of the day’s positive, non-controversial headlines. A fine-tuned transformer scores stories pulled off RSS feeds, and subscribers get whatever clears the bar.',
+      'An automated newsletter that collects the day’s positive, non-controversial headlines. A fine-tuned transformer scores stories pulled from RSS feeds and the highest scoring ones go out to subscribers.',
     stack: ['Python', 'Flask', 'Transformers', 'MongoDB', 'RSS', 'Vercel'],
     takeaway:
-      'First thing I built end to end by myself: training the model, serving it, designing the API around it, and hearing about it from real subscribers when it broke.',
+      'The first thing I built and ran end to end on my own: training the model, hosting it, writing the API around it, and fixing it when subscribers told me it was broken.',
   },
   {
     name: 'DubOps',
     year: '2025',
     summary:
-      'Point it at a GitHub repository and it writes the deployment artifacts for you, Docker and Terraform, with defaults that are not insane. Took first place at the University of Washington hackathon.',
+      'Point it at a GitHub repository and it generates the deployment files for you, Docker and Terraform, with sensible defaults. Won first place at the University of Washington hackathon.',
     stack: ['Docker', 'Terraform', 'GitHub API', 'DevOps'],
     takeaway:
-      'Containerization and infrastructure-as-code up close. Also how to make a workflow opinionated without making it a wall.',
+      'My first real work with containers and infrastructure as code, and the first time I built something meant for other developers to use.',
     award: '1st place · UW hackathon',
   },
   {
     name: 'Pawpilot',
     year: '2024',
     summary:
-      'A study companion that breaks a CS assignment into steps a beginner can follow without just handing them the answer.',
+      'A study tool that breaks a CS assignment into steps a beginner can follow, without just giving them the answer.',
     stack: ['Node.js', 'HTML', 'CSS', 'Prompt design'],
     takeaway:
-      'My first hackathon. Building fast with people I had just met, wiring up custom GPT models, and keeping my keys out of the repo.',
+      'My first hackathon. Building quickly with people I had just met, wiring up custom GPT models, and keeping API keys out of the repo.',
   },
   {
     name: 'This site',
     year: '2026',
     summary:
-      'A portfolio I rebuild every time my taste changes. Hand-drawn topographic contours, a headlamp that follows your cursor, and a palette that holds up at midnight.',
+      'A portfolio I rebuild every time my taste changes. The mountains, the contour lines and the animals are all generated in code, and everything moves off how far you have scrolled.',
     stack: ['React', 'Vite', 'SVG', 'CSS'],
     takeaway:
-      'Layout is its own skill and I am still bad at parts of it. Making motion feel deliberate is much harder than making it run.',
+      'Most of the time went into layout and animation timing rather than the code itself.',
   },
   {
     name: 'Minecraft mods',
     year: '2022',
     summary:
-      'A metal detector and better digging gear, built by reading an unfamiliar Java codebase until it stopped being unfamiliar.',
+      'Custom items for Minecraft, including a metal detector and better digging tools.',
     stack: ['Java', 'JSON', 'Game modding'],
     takeaway:
-      'Where I learned to extend code I did not write and debug behavior I could only watch from the outside.',
+      'How I first learned to read a big codebase I did not write and change parts of it without breaking everything else.',
   },
 ];
 
@@ -120,7 +120,7 @@ function Summit() {
             <h2 className="sm__title">Hudson Kass</h2>
 
             <p className="sm__lede">
-              Above the treeline. Everything past this point I built on my own time.
+              Thanks for scrolling all of that. Below are the projects I built on my own time.
             </p>
           </div>
         </div>
@@ -128,7 +128,7 @@ function Summit() {
         {/* The pack comes off: five things nobody assigned. */}
         <div className="sm__beat sm__carried">
           <div className="shell shell--railed sm__carried-inner">
-            <p className="eyebrow">Carried up · five personal projects</p>
+            <p className="eyebrow">Personal projects</p>
 
             <div className="sm__log">
               <span className="sm__log-rail" aria-hidden="true" />
@@ -164,7 +164,7 @@ function Summit() {
         {/* Where the page stops. Everything here is settled at --p: 1. */}
         <div className="sm__beat sm__close">
           <div className="shell shell--railed sm__close-inner">
-            <p className="eyebrow eyebrow--plain">Sign the register</p>
+            <p className="eyebrow eyebrow--plain">Contact</p>
             <h2 className="sm__close-title">Say hi</h2>
 
             <ul className="sm__links">
@@ -187,7 +187,7 @@ function Summit() {
             <div className="sm__foot">
               <button type="button" className="sm__descend" onClick={() => scrollToCamp('trailhead')}>
                 <span className="sm__descend-mark" aria-hidden="true">↓</span>
-                Descend to the trailhead
+                Back to the start
               </button>
 
               <p className="sm__credit">

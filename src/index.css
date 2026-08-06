@@ -34,13 +34,19 @@
   --contour-index: rgba(53, 102, 58, 0.28);
   --lamp: rgba(111, 138, 23, 0.55);
 
-  /* Sky, low to high */
-  --sky-valley: #dfe9dc;
-  --sky-forest: #cfe0dd;
-  --sky-alpine: #b9d2e2;
-  --sky-thin: #93b6d8;
-  --sky-summit: #6f9bcb;
+  /* Sky in five stages. Light mode climbs from midday to sunset. The warmth is
+     kept low in the frame on purpose: the horizon is where you look, and the
+     upper sky has to stay legible behind body text the whole way up. */
+  --sky-1: linear-gradient(to bottom, #a8cae8 0%, #d5e4de 64%, #dfe9dc 100%);
+  --sky-2: linear-gradient(to bottom, #9fc6e6 0%, #cfe0dd 62%, #e4e8dc 100%);
+  --sky-3: linear-gradient(to bottom, #9cc0e2 0%, #c3d6e0 55%, #ecdcc4 100%);
+  --sky-4: linear-gradient(to bottom, #a7c3e0 0%, #cdc4cf 48%, #f3c894 82%, #f4b072 100%);
+  --sky-5: linear-gradient(to bottom, #a8b6d8 0%, #c9a6b4 42%, #f0a768 74%, #ef7a44 100%);
+
   --star: transparent;
+  --sun-core: #fff3d4;
+  --sun-late: #ff8a3d;
+  --dawn: rgba(255, 138, 61, 0.42);
 
   /* Rock and snow, revealed above the treeline */
   --rock: #8d9186;
@@ -101,12 +107,17 @@
   --contour-index: rgba(127, 196, 107, 0.24);
   --lamp: rgba(198, 220, 95, 0.5);
 
-  --sky-valley: #101a14;
-  --sky-forest: #0c1622;
-  --sky-alpine: #0a1220;
-  --sky-thin: #070d18;
-  --sky-summit: #04060e;
+  /* Dark mode sets off at night and tops out at sunrise. */
+  --sky-1: linear-gradient(to bottom, #060a12 0%, #0a1019 60%, #0e1621 100%);
+  --sky-2: linear-gradient(to bottom, #04070e 0%, #070d16 60%, #0b121c 100%);
+  --sky-3: linear-gradient(to bottom, #050810 0%, #080f1a 60%, #0d1622 100%);
+  --sky-4: linear-gradient(to bottom, #060b16 0%, #0d1730 58%, #223050 100%);
+  --sky-5: linear-gradient(to bottom, #0a1226 0%, #16203f 52%, #4a3450 78%, #c9814e 100%);
+
   --star: rgba(236, 245, 255, 0.9);
+  --sun-core: #ffe6b8;
+  --sun-late: #ff9a4d;
+  --dawn: rgba(255, 150, 80, 0.34);
 
   --rock: #2a2f2c;
   --rock-dark: #171b19;

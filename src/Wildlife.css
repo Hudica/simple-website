@@ -101,6 +101,15 @@
 .beast--elk .leg,
 .beast--elk .beast__gait { animation-duration: 1.1s; }
 
+/* Heavy and unhurried. */
+.beast--sasquatch .leg,
+.beast--sasquatch .beast__gait { animation-duration: 1.9s; }
+
+.beast--sasquatch .leg { transform-origin: 50% 5%; }
+
+/* Leaning into the slope, the way the famous frame has him. */
+.beast--sasquatch { rotate: -4deg; }
+
 .elk__head {
   transform-box: fill-box;
   transform-origin: 86% 84%;

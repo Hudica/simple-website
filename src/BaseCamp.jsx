@@ -8,28 +8,25 @@ import './BaseCamp.css';
 
 const NOTES = [
   {
-    mark: 'Origin',
-    body: `I grew up in Sammamish, Washington, thirty minutes from a trailhead in any direction. I wrote my first
-      program freshman year of high school and never really stopped. Same appeal as a long approach: it only works
-      if you stay with it.`,
+    mark: 'Where I grew up',
+    body: `Sammamish, Washington, just outside Seattle. I started programming freshman year of high school and
+      kept at it. I came to Northeastern mostly for the co-op program.`,
   },
   {
-    mark: 'Now',
-    body: `Computer science at Northeastern with an AI concentration, which in practice means six months of classes
-      in Boston, then six months on an engineering team, then back again. Hackathons are still how I pick up a stack
-      fastest. Forty-eight hours tells you what a framework is actually like to use.`,
+    mark: 'School',
+    body: `Computer science at Northeastern with an AI concentration. Co-op means six months of classes in Boston,
+      then six months working full time, then back again. I also do hackathons whenever one comes up, which is
+      usually how I end up learning a new stack.`,
   },
   {
-    mark: 'Off-screen',
-    body: `Something physical most days. I read a lot of nonfiction and I'm bad at finishing one book before I start
-      another. Hiking and camping when the weekend allows. Somewhere with no signal is the only place I stop tuning
-      code that already works.`,
+    mark: 'Outside of work',
+    body: `I work out or do something active most days. I read a lot of nonfiction, usually a few books at once
+      because I am bad at finishing them. Weekends I try to get out hiking or camping.`,
   },
   {
-    mark: 'Next',
-    body: `I want to end up on a team where the newest person can say something is broken and have that actually
-      change what happens. The places I learned the most from made disagreement cheap and cared more about shipping
-      than about who called it first.`,
+    mark: 'What I want next',
+    body: `A team that ships real things and listens to whoever notices the problem, including the newest person
+      there. That has been true of the places I learned the most from.`,
   },
   {
     mark: 'Sundays',
@@ -104,7 +101,7 @@ function BaseCamp() {
           <span className="bc__sign-post" aria-hidden="true" />
           <span className="bc__sign-board">
             <span className="bc__sign-dest">The Approach</span>
-            <span className="bc__sign-dist">4,000 ft · keep climbing</span>
+            <span className="bc__sign-dist">4,000 ft</span>
           </span>
         </button>
       </div>

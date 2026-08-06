@@ -51,7 +51,7 @@ function Approach() {
           </p>
 
           <div className="ap__register-block">
-            <h2 className="ap__title">Summit register</h2>
+            <h2 className="ap__title">Academics</h2>
             <p className="eyebrow eyebrow--plain ap__note">
               Northeastern University · Class of 2027
             </p>
@@ -111,7 +111,7 @@ function Approach() {
           <span className="ap__sign-post" aria-hidden="true" />
           <span className="ap__sign-board">
             <span className="ap__sign-dest">The Ridge</span>
-            <span className="ap__sign-dist">6,400 ft · treeline next</span>
+            <span className="ap__sign-dist">6,400 ft</span>
           </span>
         </button>
       </div>

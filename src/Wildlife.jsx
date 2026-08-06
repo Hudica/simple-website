@@ -101,6 +101,35 @@ function Slug() {
   );
 }
 
+function Sasquatch() {
+  return (
+    <svg viewBox="0 0 160 222" className="beast beast--sasquatch">
+      {/* Facing you, wide stance, arms hanging outside the body. The splay is
+          baked into the outer groups; the inner ones carry the sway. */}
+      <g className="beast__gait" data-idle-motion>
+        <g transform="rotate(-13 126 58)">
+          <g className="leg leg--slow"><rect x="116" y="54" width="21" height="98" rx="10.5" /></g>
+        </g>
+        <g transform="rotate(-14 95 132)">
+          <g className="leg leg--slow"><rect x="82" y="130" width="26" height="88" rx="13" /></g>
+        </g>
+        <ellipse cx="76" cy="31" rx="16" ry="14" />
+        <path
+          d="M34 62 C 34 47, 50 40, 76 40 C 102 40, 116 47, 118 62
+             C 120 86, 114 114, 104 134 C 88 141, 62 141, 48 134
+             C 38 114, 32 86, 34 62 Z"
+        />
+        <g transform="rotate(13 26 58)">
+          <g className="leg leg--fast"><rect x="15" y="54" width="22" height="100" rx="11" /></g>
+        </g>
+        <g transform="rotate(13 61 132)">
+          <g className="leg leg--fast"><rect x="48" y="130" width="27" height="90" rx="13.5" /></g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
 const FAUNA = [
   { id: 'slug', Art: Slug, name: 'Banana slug', latin: 'Ariolimax columbianus',
     at: 0.09, x: '16vw', y: '74vh', h: 30, flip: false, band: 0.055 },
@@ -112,6 +141,10 @@ const FAUNA = [
     at: 0.63, x: '76vw', y: '62vh', h: 104, flip: true, band: 0.06 },
   { id: 'eagle', Art: Eagle, name: 'Bald eagle', latin: 'Haliaeetus leucocephalus',
     at: 0.87, x: '28vw', y: '22vh', h: 96, flip: false, band: 0.07 },
+  // Only turns up at the treeline on the way back down from the summit, and
+  // only if you were not looking for him. Stays findable once found.
+  { id: 'sasquatch', Art: Sasquatch, name: 'Sasquatch', latin: 'No accepted record',
+    at: 0.33, x: '79vw', y: '44vh', h: 176, flip: false, band: 0.035, secret: true },
 ];
 
 const smooth = (t) => t * t * (3 - 2 * t);
@@ -124,12 +157,29 @@ function Wildlife() {
     if (!root) return undefined;
 
     const nodes = FAUNA.map((f) => ({ f, el: root.querySelector(`[data-fauna="${f.id}"]`) }));
+    let summited = false;
+    let descending = false;
+    let found = false;
+    let last = null;
 
     return onClimb(({ climb }) => {
+      if (climb > 0.96) summited = true;
+      if (last !== null) {
+        if (climb < last - 0.002) descending = true;
+        else if (climb > last + 0.002) descending = false;
+      }
+      last = climb;
+
       nodes.forEach(({ f, el }) => {
         if (!el) return;
         const offset = (climb - f.at) / f.band;
-        const near = Math.max(0, 1 - Math.abs(offset));
+        let near = Math.max(0, 1 - Math.abs(offset));
+
+        if (f.secret) {
+          if (near > 0.6 && summited && descending) found = true;
+          if (!found && !(summited && descending)) near = 0;
+        }
+
         el.style.setProperty('--near', near > 0 ? smooth(near).toFixed(3) : '0');
         el.style.setProperty('--dy', (offset * 62).toFixed(2));
         el.style.visibility = near > 0.001 ? 'visible' : 'hidden';

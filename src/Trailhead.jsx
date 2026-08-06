@@ -29,9 +29,8 @@ function Trailhead() {
             </h1>
 
             <p className="th__statement">
-              I&rsquo;m a computer science student at Northeastern, AI concentration. I like the
-              part of the job where the thing actually ships. Weekends I&rsquo;m usually out of
-              cell range.
+              Computer science student at Northeastern, concentrating in AI. Right now
+              I&rsquo;m a software engineering intern at Apple.
             </p>
 
             <ul className="th__contacts">
@@ -68,7 +67,7 @@ function Trailhead() {
           <span className="th__sign-post" aria-hidden="true" />
           <span className="th__sign-board">
             <span className="th__sign-dest">Base Camp</span>
-            <span className="th__sign-dist">1,200 ft · scroll to climb</span>
+            <span className="th__sign-dist">1,200 ft</span>
           </span>
         </button>
       </div>

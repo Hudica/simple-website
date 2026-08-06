@@ -98,16 +98,21 @@ const STARS = (() => {
 function Mountain() {
   return (
     <div className="mtn" aria-hidden="true">
-      <div className="mtn__sky mtn__sky--valley" />
-      <div className="mtn__sky mtn__sky--forest" />
-      <div className="mtn__sky mtn__sky--alpine" />
-      <div className="mtn__sky mtn__sky--thin" />
+      <div className="mtn__sky mtn__sky--1" />
+      <div className="mtn__sky mtn__sky--2" />
+      <div className="mtn__sky mtn__sky--3" />
+      <div className="mtn__sky mtn__sky--4" />
+      <div className="mtn__sky mtn__sky--5" />
 
       <svg className="mtn__stars" viewBox="0 0 100 70" preserveAspectRatio="xMidYMin slice">
         {STARS.map((s) => (
           <circle key={s.key} cx={s.cx} cy={s.cy} r={s.r} opacity={s.o} />
         ))}
       </svg>
+
+      <div className="mtn__moon" />
+      <div className="mtn__sun" />
+      <div className="mtn__dawn" />
 
       {RIDGES.map((ridge) => (
         <svg

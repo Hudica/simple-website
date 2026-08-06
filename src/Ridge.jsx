@@ -11,7 +11,7 @@ const TRAIL = [
     current: true,
     points: [
       'Building software with a full-time engineering team.',
-      'Learning how code gets reviewed and released when the blast radius is that big.',
+      'Learning how a company this size reviews, tests, and ships code.',
     ],
   },
   {
@@ -50,7 +50,7 @@ const TRAIL = [
     points: [
       'Helped ~150 students through Foundations of Cybersecurity in office hours, grading, and lab debugging across Linux, threat modeling, cryptography, and VirtualBox.',
       'Wrote a Wireshark lab on packet sniffing and traffic analysis using real network captures.',
-      'Got much better at explaining a dense security topic so a beginner can still use it next week.',
+      'Got a lot better at explaining security concepts to people seeing them for the first time.',
     ],
   },
   {
@@ -103,7 +103,7 @@ function Ridge() {
               <span className="camp-sign__feet">6,400 ft</span>
               <span className="camp-sign__rule" />
             </p>
-            <p className="ridge__note">Six switchbacks · the work so far</p>
+            <p className="ridge__note">Six roles · 2024 to now</p>
           </header>
 
           <div className="ridge__body">
@@ -170,7 +170,7 @@ function Ridge() {
           <span className="ridge__sign-post" aria-hidden="true" />
           <span className="ridge__sign-board">
             <span className="ridge__sign-dest">Summit</span>
-            <span className="ridge__sign-dist">9,600 ft · 3,200 to go</span>
+            <span className="ridge__sign-dist">9,600 ft</span>
           </span>
         </button>
       </div>
