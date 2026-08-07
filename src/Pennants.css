@@ -1,5 +1,6 @@
-/* A short string of bunting, the kind strung over a basecamp table.
-   Seahawks colors folded in among the field-guide palette. */
+/* A short string of bunting, the kind strung over a basecamp table. Mostly
+   Seahawks colors now, with moss and ember left in so the line still belongs
+   to the page rather than to a gift shop. */
 
 .pennants {
   width: 100%;
@@ -21,7 +22,13 @@
   stroke-linecap: round;
 }
 
-.pennants__flag {
+/* The clip each flag hangs from. Small, but it is what makes the line read as
+   bunting rather than as shapes sitting on a curve. */
+.pennants__clip {
+  fill: var(--line-strong);
+}
+
+.pennants__sway {
   transform-box: fill-box;
   transform-origin: 50% 0;
   animation: pennant-sway 4.6s var(--ease-soft) infinite;
@@ -32,7 +39,6 @@
 .pennants__flag--grey path { fill: #A5ACAF; }
 .pennants__flag--moss path { fill: var(--moss); }
 .pennants__flag--ember path { fill: var(--ember); }
-.pennants__flag--lichen path { fill: var(--lichen); }
 
 /* College navy all but vanishes against the night palette — outline it. */
 [data-theme='dark'] .pennants__flag--navy path {
@@ -40,26 +46,48 @@
   stroke-width: 1;
 }
 
+/* The 12 is the one thing on the line meant to stop you: cut half again as
+   large as its neighbours, hung at the bottom of the sag, hemmed in wolf grey,
+   and swinging slower because it is the heavy one. It comes up a little while
+   the Sundays note is on screen. */
+.pennants__flag--twelve {
+  transform-box: view-box;
+  transform: scale(calc(1 + var(--sunday, 0) * 0.06));
+}
+
+.pennants__flag--twelve path {
+  stroke: #A5ACAF;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+[data-theme='dark'] .pennants__flag--twelve path { stroke-width: 1.3; }
+
+.pennants__flag--twelve .pennants__sway {
+  --amp: 2.6deg;
+  animation-duration: 6.2s;
+}
+
+/* Plex Mono only ships 400 and 500 here, so weight is added with a stroke in
+   the same green instead of leaving it to a synthetic bold, which smears. */
 .pennants__twelve {
   font-family: var(--mono);
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   fill: #69BE28;
+  stroke: #69BE28;
+  stroke-width: 0.5;
+  paint-order: stroke fill;
+  fill-opacity: calc(0.88 + var(--sunday, 0) * 0.12);
+  stroke-opacity: calc(0.88 + var(--sunday, 0) * 0.12);
 }
 
 @keyframes pennant-sway {
   0%,
-  100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
+  100% { transform: rotate(calc(var(--amp, 4deg) * -1)); }
+  50% { transform: rotate(var(--amp, 4deg)); }
 }
 
 @media (max-width: 640px) {
   .pennants { height: 60px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pennants__flag {
-    animation: none;
-    transform: none;
-  }
 }

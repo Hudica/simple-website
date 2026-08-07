@@ -1,6 +1,6 @@
 /* Everything here is positioned from --p, the progress through this section.
-   You sign the register at the bottom, then walk a switchback past eight cairns
-   until the route thins out and the next sign shows up. */
+   You sign the register at the bottom, then walk a switchback past eight sets
+   of tracks until the route thins out and the next sign shows up. */
 
 .camp--approach {
   min-height: 300svh;
@@ -29,7 +29,7 @@
 /* Register ----------------------------------------------------------------- */
 
 .ap__register-block {
-  /* Signed on the way in, then packed away before the cairns take over. */
+  /* Signed on the way in, then packed away before the tracks take over. */
   opacity: clamp(0, calc((0.54 - var(--p)) / 0.14), 1);
   transform: translateY(calc(var(--p) * -6vh));
 }
@@ -82,7 +82,7 @@
   color: var(--moss);
 }
 
-/* Switchback and cairns ---------------------------------------------------- */
+/* Switchback and tracks ---------------------------------------------------- */
 
 .ap__trail {
   position: absolute;
@@ -123,44 +123,58 @@
   stroke-dashoffset: calc(1 - clamp(0, calc((var(--p) - 0.14) / 0.54), 1));
 }
 
-.ap__cairns {
+.ap__prints {
   position: absolute;
   inset: 0;
 }
 
-.ap__cairn {
+.ap__print {
   position: absolute;
   left: var(--x);
   bottom: var(--y);
   width: clamp(6.5rem, 11vw, 9.5rem);
-  /* Each cairn is passed a little later than the one below it. */
+  /* Each print is passed a little later than the one below it. */
   --in: clamp(0, calc((var(--p) - 0.2 - var(--i) * 0.045) / 0.12), 1);
   opacity: var(--in);
   transform: translate(-50%, calc((1 - var(--in)) * 42px)) scale(var(--s));
   transform-origin: bottom center;
 }
 
-.ap__stones {
+/* --tw is the print's own box measured against a bear's, so a coyote lands
+   smaller than a bear and an elk hoof narrower than either. */
+.ap__track {
+  --hollow: color-mix(in srgb, var(--muted) 82%, var(--ink-soft));
+  /* Darker than the hollow in both schemes: --ink and --rock-dark trade places
+     between day and night, so half of each is dark either way. */
+  --shade: color-mix(in srgb, var(--ink) 50%, var(--rock-dark));
+  --wall: color-mix(in srgb, var(--hollow) 58%, var(--shade));
   display: block;
-  width: clamp(1.9rem, 3.2vw, 2.6rem);
+  width: calc(clamp(3.2rem, 4.4vw, 3.4rem) * var(--tw));
   height: auto;
   margin-inline: auto;
   overflow: visible;
 }
 
-.ap__stones rect {
-  fill: var(--rock);
-  stroke: var(--line-strong);
-  stroke-width: 1;
+/* Soil pushed out over the downhill lip. */
+.ap__track-lip {
+  fill: color-mix(in srgb, var(--wall) 34%, transparent);
 }
 
-.ap__cap {
-  fill: var(--moss);
-  stroke: none;
+.ap__track-edge {
+  fill: none;
+  stroke: color-mix(in srgb, var(--hollow) 20%, transparent);
+  stroke-width: 1.7;
+  stroke-linejoin: round;
 }
 
-/* Hung off the base of the stack so the route line still reads through. */
-.ap__cairn-name {
+/* Light falls into the hollow from up the slope: the far wall takes it, the
+   near wall stays in shadow, and that reads as pressed rather than stuck on. */
+.ap__track-lit { fill: color-mix(in srgb, var(--hollow) 70%, var(--snow)); }
+.ap__track-deep { fill: var(--hollow); }
+.ap__track-rim { fill: var(--wall); }
+
+/* Hung off the base of the print so the route line still reads through. */
+.ap__print-name {
   position: absolute;
   top: 100%;
   left: 50%;
@@ -188,7 +202,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Comes up out of the ground once the last cairn is behind you. */
+  /* Comes up out of the ground once the last print is behind you. */
   opacity: clamp(0, calc((var(--p) - 0.86) / 0.11), 1);
   transform: translateY(calc((1 - clamp(0, calc((var(--p) - 0.86) / 0.11), 1)) * 40px));
 }
@@ -242,12 +256,12 @@
 
   .ap__trail { height: 68%; }
 
-  .ap__cairn {
+  .ap__print {
     width: clamp(5rem, 24vw, 7rem);
     transform: translate(-50%, calc((1 - var(--in)) * 34px)) scale(calc(var(--s) * 0.84));
   }
 
-  .ap__cairn-name {
+  .ap__print-name {
     font-size: 0.64rem;
     letter-spacing: 0.05em;
   }

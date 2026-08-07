@@ -4,11 +4,20 @@
   z-index: 1;
   pointer-events: none;
   overflow: hidden;
-  --beast-ink: rgba(26, 46, 33, 0.82);
+  /* Solid colour plus a separate alpha, never a translucent fill. These animals
+     are built from overlapping parts, and a translucent fill prints a darker
+     seam everywhere a leg crosses a body. */
+  --beast-solid: rgb(26, 46, 33);
+  --beast-alpha: 0.82;
+  --bird-solid: rgb(26, 46, 33);
+  --bird-alpha: 0.67;
 }
 
 [data-theme='dark'] .fauna {
-  --beast-ink: rgba(6, 12, 8, 0.94);
+  --beast-solid: rgb(6, 12, 8);
+  --beast-alpha: 0.94;
+  --bird-solid: rgb(168, 196, 174);
+  --bird-alpha: 0.42;
 }
 
 .fauna__item {
@@ -28,22 +37,20 @@
   height: var(--beast-h);
   width: auto;
   overflow: visible;
-  fill: var(--beast-ink);
-  color: var(--beast-ink);
+  fill: var(--beast-solid);
+  color: var(--beast-solid);
+  opacity: var(--beast-alpha);
 }
 
 .fauna__item[data-flip='yes'] .beast { scale: -1 1; }
 
-/* Birds read as silhouettes against sky, so they can be lighter than the
-   animals standing on dark ground. */
-.beast--eagle,
-.beast--raven {
-  fill: color-mix(in srgb, var(--beast-ink) 82%, transparent);
-}
-
-[data-theme='dark'] .beast--eagle,
-[data-theme='dark'] .beast--raven {
-  fill: rgba(168, 196, 174, 0.42);
+/* Birds read against open sky, so they sit lighter than the animals standing
+   on dark ground. */
+.beast--raven,
+.beast--eagle {
+  fill: var(--bird-solid);
+  color: var(--bird-solid);
+  opacity: var(--bird-alpha);
 }
 
 .fauna__tag {
@@ -155,6 +162,19 @@
 
 .beast--raven .wing { animation-duration: 0.7s; transform-origin: 16% 95%; }
 .beast--raven .beast__glide { animation-duration: 1.4s; }
+
+/* An eagle soars. It barely moves its wings. */
+.beast--eagle .wing {
+  transform-origin: 10% 94%;
+  animation-name: soar;
+  animation-duration: 6.4s;
+}
+.beast--eagle .beast__glide { animation-duration: 6.4s; }
+
+@keyframes soar {
+  0%, 100% { rotate: -4deg; }
+  50% { rotate: 5deg; }
+}
 
 .beast--slug .beast__ooze {
   transform-box: fill-box;

@@ -94,6 +94,16 @@ function BaseCamp() {
 
         <div className="bc__hearth" aria-hidden="true">
           <Campfire />
+          <svg className="bc__standard" viewBox="0 0 44 60">
+            <ellipse className="bc__standard-ground" cx="10" cy="58" rx="6.5" ry="1.7" />
+            <path className="bc__standard-pole" d="M10,58V2" />
+            <g className="bc__standard-fly" data-idle-motion>
+              <path className="bc__standard-flag" d="M10.8,2.5L42,17L10.8,31.5Z" />
+              <text className="bc__standard-twelve" x="20" y="21.4" textAnchor="middle">
+                12
+              </text>
+            </g>
+          </svg>
         </div>
 
         {/* Camp is struck and the fire stays lit while the next sign walks in. */}

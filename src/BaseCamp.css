@@ -5,6 +5,12 @@
 .camp--basecamp {
   min-height: 380svh;
   --strike: clamp(0, calc((var(--p) - 0.87) / 0.09), 1);
+  /* Rides just behind the fifth note, the Seahawks one, which is legible from
+     0.704 to 0.800. Read only by the two flags, and only to nudge them. */
+  --sunday: calc(
+    clamp(0, calc((var(--p) - 0.676) / 0.05), 1) -
+    clamp(0, calc((var(--p) - 0.804) / 0.05), 1)
+  );
 }
 
 .bc {
@@ -161,6 +167,60 @@
 
 .bc__hearth .campfire {
   height: clamp(58px, 9vh, 92px);
+}
+
+/* A marker flag stuck in the dirt beside the fire. Camp kit scale: shorter
+   than the flames, off to one side, the kind of thing you only clock on the
+   second look. It goes up when you arrive and packs away with the rest. */
+.bc__standard {
+  position: absolute;
+  left: 100%;
+  bottom: 6%;
+  height: clamp(50px, 7vh, 66px);
+  margin-left: clamp(0.3rem, 1vw, 0.7rem);
+  --in: clamp(0, calc((var(--p) - 0.05) / 0.12), 1);
+  opacity: calc(var(--in) * (1 - var(--strike)));
+  transform: translateY(calc((1 - var(--in)) * 16px - var(--sunday, 0) * 3px));
+}
+
+.bc__standard-ground { fill: var(--line-strong); }
+
+.bc__standard-pole {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.bc__standard-fly {
+  transform-box: view-box;
+  transform-origin: 10.8px 17px;
+  animation: camp-flag-fly 5.4s var(--ease-soft) infinite;
+}
+
+.bc__standard-flag {
+  fill: #002244;
+  stroke: #A5ACAF;
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+.bc__standard-twelve {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  fill: #69BE28;
+  stroke: #69BE28;
+  stroke-width: 0.4;
+  paint-order: stroke fill;
+  fill-opacity: calc(0.88 + var(--sunday, 0) * 0.12);
+  stroke-opacity: calc(0.88 + var(--sunday, 0) * 0.12);
+}
+
+@keyframes camp-flag-fly {
+  0%,
+  100% { transform: rotate(-3.2deg); }
+  50% { transform: rotate(3.4deg); }
 }
 
 .bc__sign {
