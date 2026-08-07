@@ -5,6 +5,8 @@ import './Summit.css';
 const PROJECTS = [
   {
     id: 'brightside',
+    repo: 'https://github.com/Hudica/brightside-newsletter',
+    repoLabel: 'brightside-newsletter',
     name: 'BrightSide Newsletter',
     year: '2024 to now',
     summary:
@@ -26,6 +28,8 @@ const PROJECTS = [
   },
   {
     id: 'pawpilot',
+    repo: 'https://github.com/Hudica/PawPilotV1',
+    repoLabel: 'PawPilotV1',
     name: 'Pawpilot',
     year: '2024',
     summary:
@@ -36,6 +40,8 @@ const PROJECTS = [
   },
   {
     id: 'this-site',
+    repo: 'https://github.com/Hudica/simple-website',
+    repoLabel: 'simple-website',
     name: 'This site',
     year: '2026',
     summary:
@@ -46,6 +52,8 @@ const PROJECTS = [
   },
   {
     id: 'mods',
+    repo: 'https://github.com/Hudica/MC-tutorialmod-1.20.X',
+    repoLabel: 'MC-tutorialmod-1.20.X',
     name: 'Minecraft mods',
     year: '2022',
     summary:
@@ -421,6 +429,19 @@ function Summit() {
                     <p className="sm__notes">{entry.takeaway}</p>
                   </div>
                 </div>
+
+                {entry.repo && (
+                  <a
+                    className="sm__repo"
+                    href={entry.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="sm__repo-tag">Source</span>
+                    <span className="sm__repo-name">{entry.repoLabel}</span>
+                    <span className="sm__repo-arrow" aria-hidden="true">↗</span>
+                  </a>
+                )}
               </div>
             ))}
           </div>

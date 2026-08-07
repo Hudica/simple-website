@@ -358,14 +358,15 @@
 
 .sm__entry-year { color: var(--muted); }
 
+/* The index rail is only about 208px wide, which a pill of this length cannot
+   fit at any readable size. Here it is a coloured note that wraps; the detail
+   panel has the room to carry the pill. */
 .sm__entry-award {
-  padding: 0 0.4rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ember) 16%, transparent);
+  flex: 1 1 100%;
+  min-width: 0;
   color: var(--ember);
   letter-spacing: 0.03em;
   text-transform: none;
-  white-space: nowrap;
 }
 
 .sm__entry-name {
@@ -568,6 +569,54 @@
   border-left: 2px solid color-mix(in srgb, var(--moss) 55%, transparent);
   line-height: 1.6;
   color: var(--ink-soft);
+}
+
+/* Source link. Only four of the five have a public repo, so this is rendered
+   conditionally rather than left as a dead control. */
+.sm__repo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  align-self: flex-start;
+  margin-top: 1.1rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  color: var(--ink);
+  transition: border-color 0.3s var(--ease-soft), background-color 0.3s var(--ease-soft),
+    transform 0.3s var(--ease);
+}
+
+.sm__repo:hover {
+  transform: translateY(-2px);
+  border-color: var(--moss);
+  background: var(--surface);
+}
+
+.sm__repo-tag {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sm__repo-name {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+}
+
+.sm__repo-arrow {
+  color: var(--moss);
+  transition: translate 0.3s var(--ease);
+}
+
+.sm__repo:hover .sm__repo-arrow { translate: 2px -2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sm__repo,
+  .sm__repo-arrow { transition: none; }
 }
 
 /* The close ---------------------------------------------------------------- */
